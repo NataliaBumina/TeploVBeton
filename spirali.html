@@ -416,30 +416,42 @@
   </section>
 
   <!-- Modal Order Form -->
-  <div id="orderFormModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50" onclick="closeOrderForm(event)">
-    <div class="bg-white rounded-lg p-8 max-w-md w-full mx-4 relative" onclick="event.stopPropagation()">
+  <div 420
+            <div id="orderFormModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50" onclick="closeOrderForm(event)">    <div class="bg-white rounded-lg p-8 max-w-md w-full mx-4 relative" onclick="event.stopPropagation()">
       <button onclick="closeOrderForm()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
       <h3 class="text-2xl font-bold mb-6 text-gray-800">Заказ спиралей</h3>
-            <form id="spiralOrderForm" onsubmit="submitOrderForm(event)">
-                                            <div class="mb-4">
-          <label class="block text-gray-700 font-medium mb-2">Имя *</label>
-          <input type="text" name="name" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-        </div>
-          <input type="tel" name="phone" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-        </div>
-        <div class="mb-4">
-          <label class="block text-gray-700 font-medium mb-2">Количество спиралей (шт) *</label>
-          <input type="number" name="quantity" required min="1" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-        </div>
-        <div class="mb-6">
-          <label class="flex items-start text-sm text-gray-600">
-            <input type="checkbox" name="consent" required class="mt-1 mr-2">
-            <span>Я даю согласие на <a href="#privacy" class="text-blue-600 underline">обработку персональных данных</a> в соответствии с Федеральным законом №152-ФЗ</span>
-          </label>
-        </div>
-        <button type="submit" class="w-full bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition">
-        </button>
-      </form>
+                        <form id="spiralOrderForm" onsubmit="submitOrderForm(event)">
+                            <!-- Имя -->
+                            <div class="mb-4">
+                                <label class="block text-gray-700 font-medium mb-2">Имя *</label>
+                                <input type="text" name="name" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                            
+                            <!-- Номер телефона -->
+                            <div class="mb-4">
+                                <label class="block text-gray-700 font-medium mb-2">Номер телефона *</label>
+                                <input type="tel" name="phone" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                            
+                            <!-- Количество спиралей -->
+                            <div class="mb-4">
+                                <label class="block text-gray-700 font-medium mb-2">Количество спиралей (шт) *</label>
+                                <input type="number" name="quantity" required min="1" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                            
+                            <!-- Согласие на обработку данных -->
+                            <div class="mb-6">
+                                <label class="flex items-start text-sm text-gray-600">
+                                    <input type="checkbox" name="consent" required class="mt-1 mr-2">
+                                    <span>Я даю согласие на <a href="/index.html#privacy" target="_blank" class="text-blue-600 underline">обработку персональных данных</a> в соответствии с Федеральным законом №152-ФЗ</span>
+                                </label>
+                            </div>
+                            
+                            <!-- Кнопка отправки -->
+                            <button type="submit" class="w-full bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition">
+                                Отправить заявку
+                            </button>
+                        </form>419
     </div>
   </div>      </div>
     </footer>
