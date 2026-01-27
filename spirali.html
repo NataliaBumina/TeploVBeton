@@ -404,18 +404,47 @@
                 <p class="mb-2 text-white font-medium">Спирали ПНСВ 1.2 — надежное решение для зимнего строительства.</p>
                 <p>Соответствие стандартам: СНиП 3.05.01-85, ГОСТ 3348-75, ПУЭ.</p>
             </div>
-          <!-- Order CTA Section -->
+    <!-- Order CTA Section -->
   <section class="bg-gradient-to-r from-blue-500 to-orange-500 py-16 text-white text-center">
     <div class="container mx-auto px-4">
       <h2 class="text-3xl md:text-4xl font-bold mb-4">Закажите спирали для прогрева бетона</h2>
       <p class="text-xl mb-8">Свяжитесь с нами сегодня и получите бесплатную консультацию</p>
-      <a href="tel:+79527360337" class="inline-block bg-white text-blue-600 font-bold py-4 px-8 rounded-lg text-lg hover:bg-gray-100 transition shadow-lg">
+      <button onclick="openOrderForm()" class="inline-block bg-white text-blue-600 font-bold py-4 px-8 rounded-lg text-lg hover:bg-gray-100 transition shadow-lg cursor-pointer">
         📞 Заказать спирали
-      </a>
-      <p class="mt-4 text-sm">Или напишите нам в Telegram: <a href="https://t.me/tshingareev" class="underline">@tshingareev</a></p>
+      </button>
     </div>
   </section>
+
+  <!-- Modal Order Form -->
+  <div id="orderFormModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50" onclick="closeOrderForm(event)">
+    <div class="bg-white rounded-lg p-8 max-w-md w-full mx-4 relative" onclick="event.stopPropagation()">
+      <button onclick="closeOrderForm()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+      <h3 class="text-2xl font-bold mb-6 text-gray-800">Заказ спиралей</h3>
+      <form id="spiralOrderForm" onsubmit="submitOrderForm(event)">
+        <div class="mb-4">
+          <label class="block text-gray-700 font-medium mb-2">Имя *</label>
+          <input type="text" name="name" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
         </div>
+        <div class="mb-4">
+          <label class="block text-gray-700 font-medium mb-2">Номер телефона *</label>
+          <input type="tel" name="phone" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+        </div>
+        <div class="mb-4">
+          <label class="block text-gray-700 font-medium mb-2">Количество спиралей (шт) *</label>
+          <input type="number" name="quantity" required min="1" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+        </div>
+        <div class="mb-6">
+          <label class="flex items-start text-sm text-gray-600">
+            <input type="checkbox" name="consent" required class="mt-1 mr-2">
+            <span>Я даю согласие на <a href="#privacy" class="text-blue-600 underline">обработку персональных данных</a> в соответствии с Федеральным законом №152-ФЗ</span>
+          </label>
+        </div>
+        <button type="submit" class="w-full bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition">
+          Отправить заявку
+        </button>
+      </form>
+    </div>
+  </div>      </div>
     </footer>
 
     <script>
@@ -441,6 +470,45 @@
             spiralsResult.innerText = spiralsNeeded + " шт";
             costResult.innerText = totalCost.toLocaleString('ru-RU') + " руб";
         }
+
+            // Order Form Modal Functions
+    function openOrderForm() {
+      document.getElementById('orderFormModal').classList.remove('hidden');
+      document.getElementById('orderFormModal').classList.add('flex');
+    }
+
+    function closeOrderForm(event) {
+      if (!event || event.target.id === 'orderFormModal') {
+        document.getElementById('orderFormModal').classList.add('hidden');
+        document.getElementById('orderFormModal').classList.remove('flex');
+      }
+    }
+
+    function submitOrderForm(event) {
+      event.preventDefault();
+      const form = event.target;
+      const formData = new FormData(form);
+      const name = formData.get('name');
+      const phone = formData.get('phone');
+      const quantity = formData.get('quantity');
+      
+      // Create mailto link
+      const subject = encodeURIComponent('Заказ спиралей прогрева бетона');
+      const body = encodeURIComponent(
+        `Имя: ${name}\n` +
+        `Телефон: ${phone}\n` +
+        `Количество спиралей: ${quantity} шт\n\n` +
+        `Согласие на обработку персональных данных получено.`
+      );
+      
+      // Open email client
+      window.location.href = `mailto:igor260677@gmail.com?subject=${subject}&body=${body}`;
+      
+      // Close modal and reset form
+      closeOrderForm();
+      form.reset();
+      alert('Спасибо! Ваша заявка отправлена. Мы свяжемся с вами в ближайшее время.');
+    }
     </script>
 
 </body>
